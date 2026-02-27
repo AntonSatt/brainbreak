@@ -1,17 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brainbreak</title>
+  <title>Mental Hälsa – Hitta lugn och balans</title>
   <link rel="stylesheet" href="homepage/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Brainbreak</h1>
-  <nav>
-    <a href="colorpainting/index.html">Color Painting</a>
-    <a href="soundscape/index.html">Soundscape</a>
-  </nav>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="Mental Hälsa – Hem">
+        <!-- Leaf icon -->
+        <svg class="logo-icon" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 2C10 8 2 16 2 24c0 6 4 12 14 14C26 36 30 30 30 24 30 16 22 8 16 2Z" fill="#6B8F71"/>
+          <path d="M16 38V14" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M16 22c-4-3-8-2-10 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M16 18c3-3 7-2 9 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Mental Hälsa</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="#" class="nav-link active">Hem</a></li>
+          <li><a href="#om-oss" class="nav-link">Om oss</a></li>
+          <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" aria-label="Välkommen">
+    <!-- Decorative background shapes -->
+    <div class="hero-bg">
+      <div class="shape shape--top-right"></div>
+      <div class="shape shape--left"></div>
+      <div class="shape shape--bottom-left"></div>
+      <div class="shape shape--circle"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Hitta lugn och <em>balans</em> i livet
+      </h1>
+      <p class="hero-subtitle">
+        Utforska verktyg för mental hälsa och kreativt välmående.
+      </p>
+
+      <!-- Feature cards -->
+      <div class="cards">
+        <a href="soundscape/index.html" class="card card--dark" aria-label="Gå till Soundbuzz – Avslappnande ljud och musik">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Sound waves icon -->
+            <svg viewBox="0 0 48 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 18c4-8 8-8 12 0s8 8 12 0 8-8 12 0 8 8 12 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M8 14c3-5 6-5 9 0s6 5 9 0 6-5 9 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5"/>
+            </svg>
+          </div>
+          <h2 class="card-title">Soundbuzz</h2>
+          <p class="card-desc">Avslappnande ljud &amp; musik</p>
+          <span class="card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a href="colorpainting/index.html" class="card card--light" aria-label="Gå till ColorPainting – Målarböcker och kreativitet">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Palette icon -->
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="18" cy="16" r="3" fill="currentColor" opacity=".7"/>
+              <circle cx="30" cy="16" r="3" fill="currentColor" opacity=".5"/>
+              <circle cx="14" cy="26" r="3" fill="currentColor" opacity=".6"/>
+              <path d="M28 32c2-2 6-2 8 0s2 6-2 6-4-2-6 0-6 1-6-2 4-2 6-4Z" fill="currentColor" opacity=".4"/>
+            </svg>
+          </div>
+          <h2 class="card-title">ColorPainting</h2>
+          <p class="card-desc">Målarböcker &amp; kreativitet</p>
+          <span class="card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14m-6-6 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <!-- Hero landscape image -->
+    <div class="hero-landscape">
+      <img
+        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=80"
+        alt="Dimmigt skogslandskap vid en stilla sjö i gryningsljus"
+        loading="eager"
+      />
+      <div class="hero-landscape-fade"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="om-oss" class="section about" aria-labelledby="about-title">
+    <div class="section-inner">
+      <div class="section-wave" aria-hidden="true">
+        <svg viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 6c10-6 20-6 30 0s20 6 30 0 20-6 30 0 20 6 30 0" stroke="#6B8F71" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 id="about-title" class="section-title">Om oss</h2>
+      <p class="section-text">
+        Vi tror att mental hälsa börjar med små stunder av lugn.
+        Vår plattform erbjuder enkla, kreativa verktyg som hjälper dig att
+        slappna av, fokusera och hitta balans i vardagen – oavsett var du befinner dig.
+      </p>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">🎧</div>
+          <h3>Ljudlandskap</h3>
+          <p>Anpassade ljudmiljöer för avslappning, fokus och sömn.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">🎨</div>
+          <h3>Kreativt skapande</h3>
+          <p>Digitala målarböcker som lugnar sinnet genom kreativitet.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">🌿</div>
+          <h3>Naturligt lugn</h3>
+          <p>Inspirerat av naturen – designat för ditt välmående.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="kontakt" class="section contact" aria-labelledby="contact-title">
+    <div class="section-inner">
+      <h2 id="contact-title" class="section-title">Kontakt</h2>
+      <p class="section-text">
+        Har du frågor, förslag eller vill samarbeta?<br>
+        Hör av dig till oss – vi svarar så snart vi kan.
+      </p>
+      <a href="mailto:hej@mentalhälsa.se" class="contact-btn">Skicka e-post</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Mental Hälsa. Alla rättigheter förbehållna.</p>
+  </footer>
+
   <script src="homepage/script.js"></script>
 </body>
 </html>
