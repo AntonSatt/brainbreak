@@ -129,6 +129,8 @@ function App() {
           <nav className={`main-nav ${navOpen ? 'open' : ''}`} aria-label="Main navigation">
             <ul>
               <li><a href="/index.html" className="nav-link">Home</a></li>
+              <li><a href="/index.html#about" className="nav-link">About</a></li>
+              <li><a href="/index.html#contact" className="nav-link">Contact</a></li>
               <li><button className="nav-link active" onClick={() => { scrollToApp(); setNavOpen(false); }}>ColorPainting</button></li>
             </ul>
           </nav>
