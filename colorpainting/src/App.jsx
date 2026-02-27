@@ -107,14 +107,14 @@ function App() {
       {/* ===== HEADER / NAV ===== */}
       <header className="site-header" ref={headerRef}>
         <div className="header-inner">
-          <a href="/index.html" className="logo" aria-label="Mental Health – Home">
+          <a href="/index.html" className="logo" aria-label="Mindspace – Home">
             <svg className="logo-icon" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M16 2C10 8 2 16 2 24c0 6 4 12 14 14C26 36 30 30 30 24 30 16 22 8 16 2Z" fill="#6B8F71"/>
               <path d="M16 38V14" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/>
               <path d="M16 22c-4-3-8-2-10 0" stroke="#fff" strokeWidth="1.2" strokeLinecap="round"/>
               <path d="M16 18c3-3 7-2 9 0" stroke="#fff" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
-            <span className="logo-text">Mental Health</span>
+            <span className="logo-text">Mindspace</span>
           </a>
 
           <button
@@ -247,7 +247,7 @@ function App() {
 
       {/* ===== FOOTER ===== */}
       <footer className="site-footer">
-        <p>&copy; 2026 Mental Health. All rights reserved.</p>
+        <p>&copy; 2026 Mindspace. All rights reserved.</p>
       </footer>
 
       {/* Float keyframe for scroll hint */}
