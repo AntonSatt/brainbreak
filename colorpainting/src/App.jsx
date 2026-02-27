@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [navOpen, setNavOpen] = useState(false);
+  const [focusMode, setFocusMode] = useState(false);
   const canvasDataRef = useRef(null);
   const headerRef = useRef(null);
 
@@ -176,9 +177,9 @@ function App() {
           </svg>
         </div>
 
-        <div className="main-layout">
+        <div className={`main-layout${focusMode ? ' focus-mode' : ''}`}>
           {/* Left panel: Drawing */}
-          <div className="left-panel panel fade-in">
+          <div className={`left-panel panel fade-in visible${focusMode ? ' hidden' : ''}`}>
             <div className="panel-title">
               <svg className="panel-title-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -219,10 +220,12 @@ function App() {
             )}
 
             {coloringImage && (
-              <div className="fade-in visible">
+              <div className={`fade-in visible${focusMode ? ' focus-layout' : ''}`}>
                 <ColoringCanvas
                   imageSrc={coloringImage}
                   selectedColor={selectedColor}
+                  focusMode={focusMode}
+                  onToggleFocus={() => setFocusMode(f => !f)}
                 />
                 <ColorPalette
                   selectedColor={selectedColor}
