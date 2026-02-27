@@ -66,7 +66,7 @@ function App() {
     }
 
     if (!canvasDataRef.current) {
-      setError('Rita något först!');
+      setError('Draw something first!');
       return;
     }
     setLoading(true);
@@ -86,7 +86,7 @@ function App() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || 'Kunde inte generera målarbokssida');
+        throw new Error(data.error || 'Could not generate coloring page');
       }
 
       setColoringImage(data.image);
@@ -107,28 +107,28 @@ function App() {
       {/* ===== HEADER / NAV ===== */}
       <header className="site-header" ref={headerRef}>
         <div className="header-inner">
-          <a href="/" className="logo" aria-label="Mental Hälsa – Hem">
+          <a href="../../index.html" className="logo" aria-label="Mental Health – Home">
             <svg className="logo-icon" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M16 2C10 8 2 16 2 24c0 6 4 12 14 14C26 36 30 30 30 24 30 16 22 8 16 2Z" fill="#6B8F71"/>
               <path d="M16 38V14" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/>
               <path d="M16 22c-4-3-8-2-10 0" stroke="#fff" strokeWidth="1.2" strokeLinecap="round"/>
               <path d="M16 18c3-3 7-2 9 0" stroke="#fff" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
-            <span className="logo-text">Mental Hälsa</span>
+            <span className="logo-text">Mental Health</span>
           </a>
 
           <button
             className={`nav-toggle ${navOpen ? 'open' : ''}`}
-            aria-label="Öppna meny"
+            aria-label="Open menu"
             aria-expanded={navOpen}
             onClick={() => setNavOpen(!navOpen)}
           >
             <span></span><span></span><span></span>
           </button>
 
-          <nav className={`main-nav ${navOpen ? 'open' : ''}`} aria-label="Huvudnavigation">
+          <nav className={`main-nav ${navOpen ? 'open' : ''}`} aria-label="Main navigation">
             <ul>
-              <li><a href="/" className="nav-link">Hem</a></li>
+              <li><a href="../../index.html" className="nav-link">Home</a></li>
               <li><button className="nav-link active" onClick={() => { scrollToApp(); setNavOpen(false); }}>ColorPainting</button></li>
             </ul>
           </nav>
@@ -136,7 +136,7 @@ function App() {
       </header>
 
       {/* ===== HERO SECTION ===== */}
-      <section className="hero" aria-label="Välkommen">
+      <section className="hero" aria-label="Welcome">
         <div className="hero-bg">
           <div className="shape shape--top-right"></div>
           <div className="shape shape--left"></div>
@@ -145,10 +145,10 @@ function App() {
 
         <div className="hero-content">
           <h1 className="hero-title">
-            Skapa din egen <em>målarbok</em>
+            Create your own <em>coloring book</em>
           </h1>
           <p className="hero-subtitle">
-            Rita en skiss, låt AI:n skapa en vacker målarbokssida – och fyll i den med färger direkt i webbläsaren.
+            Draw a sketch, let AI create a beautiful coloring page – and fill it with colors right in your browser.
           </p>
         </div>
 
@@ -182,7 +182,7 @@ function App() {
                 <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              Rita din skiss
+              Draw your sketch
             </div>
 
             <DrawingCanvas />
@@ -190,7 +190,7 @@ function App() {
             <input
               type="text"
               className="text-input"
-              placeholder="Valfritt: beskriv din teckning (t.ex. 'en glad katt')"
+              placeholder="Optional: describe your drawing (e.g. 'a happy cat')"
               value={text}
               onChange={(e) => setText(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
@@ -201,7 +201,7 @@ function App() {
               onClick={handleGenerate}
               disabled={loading}
             >
-              {loading ? 'Genererar...' : 'Skapa målarbokssida'}
+              {loading ? 'Generating...' : 'Create coloring page'}
             </button>
 
             {error && <p className="error">{error}</p>}
@@ -212,7 +212,7 @@ function App() {
             {loading && (
               <div className="loading fade-in visible">
                 <div className="spinner" />
-                <p>Skapar din målarbokssida...</p>
+                <p>Creating your coloring page...</p>
               </div>
             )}
 
@@ -238,7 +238,7 @@ function App() {
                   <circle cx="14" cy="26" r="3" fill="currentColor" opacity=".6"/>
                   <path d="M28 32c2-2 6-2 8 0s2 6-2 6-4-2-6 0-6 1-6-2 4-2 6-4Z" fill="currentColor" opacity=".4"/>
                 </svg>
-                <p>Din målarbokssida visas här</p>
+                <p>Your coloring page will appear here</p>
               </div>
             )}
           </div>
@@ -247,7 +247,7 @@ function App() {
 
       {/* ===== FOOTER ===== */}
       <footer className="site-footer">
-        <p>&copy; 2026 Mental Hälsa. Alla rättigheter förbehållna.</p>
+        <p>&copy; 2026 Mental Health. All rights reserved.</p>
       </footer>
 
       {/* Float keyframe for scroll hint */}

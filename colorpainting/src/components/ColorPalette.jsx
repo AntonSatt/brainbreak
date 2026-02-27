@@ -8,7 +8,7 @@ const COLORS = [
 export default function ColorPalette({ selectedColor, onSelectColor }) {
   return (
     <div className="color-palette-wrapper">
-      <div className="color-palette-label">Välj färg</div>
+      <div className="color-palette-label">Choose color</div>
       <div className="color-palette">
         {COLORS.map((color) => (
           <button
@@ -24,7 +24,7 @@ export default function ColorPalette({ selectedColor, onSelectColor }) {
           value={selectedColor}
           onChange={(e) => onSelectColor(e.target.value)}
           className="color-picker-input"
-          title="Egen färg"
+          title="Custom color"
         />
       </div>
     </div>

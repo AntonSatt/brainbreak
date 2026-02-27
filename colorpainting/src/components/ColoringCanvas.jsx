@@ -43,8 +43,8 @@ export default function ColoringCanvas({ imageSrc, selectedColor }) {
 
   return (
     <div className="coloring-section">
-      <h2>Färglägg din sida!</h2>
-      <p className="hint">Klicka på ett vitt område för att fylla det med vald färg</p>
+      <h2>Color your page!</h2>
+      <p className="hint">Click on a white area to fill it with the selected color</p>
       <canvas
         ref={canvasRef}
         className="coloring-canvas"
