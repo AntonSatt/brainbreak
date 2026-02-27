@@ -72,6 +72,25 @@
 	const progressBar = document.getElementById('progress-bar');
 	const timeDisplay = document.getElementById('time-display');
 	const volumeControl = document.getElementById('volume-control');
+	const globalPlayer = document.querySelector('.global-player');
+
+	function syncPlayerHeightVar() {
+		if (!globalPlayer) {
+			return;
+		}
+
+		const playerHeight = Math.ceil(globalPlayer.offsetHeight);
+		document.documentElement.style.setProperty('--player-height', `${playerHeight}px`);
+	}
+
+	window.addEventListener('load', syncPlayerHeightVar);
+	window.addEventListener('resize', syncPlayerHeightVar);
+	syncPlayerHeightVar();
+
+	if (globalPlayer && 'ResizeObserver' in window) {
+		const playerResizeObserver = new ResizeObserver(syncPlayerHeightVar);
+		playerResizeObserver.observe(globalPlayer);
+	}
 
 	if (!audio || !nowPlayingText || !globalPlayPauseBtn || !progressBar || !timeDisplay || !volumeControl) {
 		return;
