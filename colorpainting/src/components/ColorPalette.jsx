@@ -7,23 +7,26 @@ const COLORS = [
 
 export default function ColorPalette({ selectedColor, onSelectColor }) {
   return (
-    <div className="color-palette">
-      {COLORS.map((color) => (
-        <button
-          key={color}
-          className={`color-swatch ${selectedColor === color ? 'selected' : ''}`}
-          style={{ backgroundColor: color }}
-          onClick={() => onSelectColor(color)}
-          title={color}
+    <div className="color-palette-wrapper">
+      <div className="color-palette-label">Välj färg</div>
+      <div className="color-palette">
+        {COLORS.map((color) => (
+          <button
+            key={color}
+            className={`color-swatch ${selectedColor === color ? 'selected' : ''}`}
+            style={{ backgroundColor: color }}
+            onClick={() => onSelectColor(color)}
+            title={color}
+          />
+        ))}
+        <input
+          type="color"
+          value={selectedColor}
+          onChange={(e) => onSelectColor(e.target.value)}
+          className="color-picker-input"
+          title="Egen färg"
         />
-      ))}
-      <input
-        type="color"
-        value={selectedColor}
-        onChange={(e) => onSelectColor(e.target.value)}
-        className="color-picker-input"
-        title="Custom color"
-      />
+      </div>
     </div>
   );
 }

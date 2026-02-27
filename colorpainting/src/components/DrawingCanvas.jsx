@@ -72,7 +72,7 @@ export default function DrawingCanvas() {
     <div className="drawing-section">
       <div className="toolbar">
         <label>
-          Brush: {brushSize}px
+          Pensel: {brushSize}px
           <input
             type="range"
             min="1"
@@ -85,16 +85,16 @@ export default function DrawingCanvas() {
           className={`tool-btn ${!isEraser ? 'active' : ''}`}
           onClick={() => setIsEraser(false)}
         >
-          Pen
+          Penna
         </button>
         <button
           className={`tool-btn ${isEraser ? 'active' : ''}`}
           onClick={() => setIsEraser(true)}
         >
-          Eraser
+          Suddgummi
         </button>
         <button className="tool-btn" onClick={clearCanvas}>
-          Clear
+          Rensa
         </button>
       </div>
       <canvas

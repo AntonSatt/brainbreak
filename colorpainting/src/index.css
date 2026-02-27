@@ -1,17 +1,79 @@
+/* =============================================
+   ColorPainting – Global Styles
+   (Matching Mental Hälsa homepage design)
+   ============================================= */
+
+/* ---------- CSS Custom Properties ---------- */
 :root {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #1a1a2e;
-  background-color: #f0f0f5;
+  --clr-green-dark: #4a6b50;
+  --clr-green: #6b8f71;
+  --clr-green-light: #a3bfa8;
+  --clr-cream: #f5f0eb;
+  --clr-cream-dark: #e8dfda;
+  --clr-sand: #d4c4b0;
+  --clr-sand-light: #e2d5c7;
+  --clr-blush: #d6c4b6;
+  --clr-white: #ffffff;
+  --clr-text: #2e3a2f;
+  --clr-text-light: #5e6b5f;
+
+  --ff-heading: 'Playfair Display', Georgia, serif;
+  --ff-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 50%;
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 12px 48px rgba(0, 0, 0, 0.14);
+
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  margin: 0;
+  font-family: var(--ff-body);
+  color: var(--clr-text);
+  background: var(--clr-cream);
+  line-height: 1.6;
+  overflow-x: hidden;
   min-width: 320px;
   min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
