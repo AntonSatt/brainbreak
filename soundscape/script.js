@@ -1,143 +1,195 @@
-const moodCards = document.querySelectorAll('.mood-card');
-const soundButtons = document.querySelectorAll('.play-sound-btn');
+/* =============================================
+	 Mental Hälsa – Soundscape Scripts
+	 ============================================= */
 
-const audio = document.getElementById('global-audio');
-const nowPlayingText = document.getElementById('now-playing');
-const globalPlayPauseBtn = document.getElementById('global-play-pause');
-const progressBar = document.getElementById('progress-bar');
-const timeDisplay = document.getElementById('time-display');
-const volumeControl = document.getElementById('volume-control');
+(function () {
+	'use strict';
 
-let currentTitle = '';
+	// ---------- Header scroll effect ----------
+	const header = document.querySelector('.site-header');
 
-// Smooth scroll to the selected mood section.
-moodCards.forEach((card) => {
-	card.addEventListener('click', () => {
-		const sectionId = card.dataset.target;
-		const targetSection = document.getElementById(sectionId);
+	function onScroll() {
+		if (!header) return;
 
-		if (targetSection) {
-			targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		if (window.scrollY > 40) {
+			header.classList.add('scrolled');
+		} else {
+			header.classList.remove('scrolled');
 		}
-	});
-});
-
-// Convert seconds to mm:ss format for the time display.
-function formatTime(totalSeconds) {
-	if (!Number.isFinite(totalSeconds)) {
-		return '0:00';
 	}
 
-	const minutes = Math.floor(totalSeconds / 60);
-	const seconds = Math.floor(totalSeconds % 60);
-	return `${minutes}:${String(seconds).padStart(2, '0')}`;
-}
+	window.addEventListener('scroll', onScroll, { passive: true });
+	onScroll();
 
-function updateTimeDisplay() {
-	const current = formatTime(audio.currentTime);
-	const duration = formatTime(audio.duration);
-	timeDisplay.textContent = `${current} / ${duration}`;
-}
+	// ---------- Mobile nav toggle ----------
+	const navToggle = document.querySelector('.nav-toggle');
+	const mainNav = document.querySelector('.main-nav');
 
-function updateProgressBar() {
-	if (!audio.duration) {
-		progressBar.value = '0';
+	if (navToggle && mainNav) {
+		navToggle.addEventListener('click', () => {
+			const isOpen = navToggle.classList.toggle('open');
+			mainNav.classList.toggle('open');
+			navToggle.setAttribute('aria-expanded', String(isOpen));
+		});
+
+		mainNav.querySelectorAll('.nav-link').forEach((link) => {
+			link.addEventListener('click', () => {
+				navToggle.classList.remove('open');
+				mainNav.classList.remove('open');
+				navToggle.setAttribute('aria-expanded', 'false');
+			});
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && mainNav.classList.contains('open')) {
+				navToggle.classList.remove('open');
+				mainNav.classList.remove('open');
+				navToggle.setAttribute('aria-expanded', 'false');
+				navToggle.focus();
+			}
+		});
+	}
+
+	// ---------- Soundscape mood scroll ----------
+	const moodCards = document.querySelectorAll('.mood-card');
+
+	moodCards.forEach((card) => {
+		card.addEventListener('click', () => {
+			const sectionId = card.dataset.target;
+			const targetSection = document.getElementById(sectionId);
+
+			if (targetSection) {
+				targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}
+		});
+	});
+
+	// ---------- Global audio player ----------
+	const soundButtons = document.querySelectorAll('.play-sound-btn');
+	const audio = document.getElementById('global-audio');
+	const nowPlayingText = document.getElementById('now-playing');
+	const globalPlayPauseBtn = document.getElementById('global-play-pause');
+	const progressBar = document.getElementById('progress-bar');
+	const timeDisplay = document.getElementById('time-display');
+	const volumeControl = document.getElementById('volume-control');
+
+	if (!audio || !nowPlayingText || !globalPlayPauseBtn || !progressBar || !timeDisplay || !volumeControl) {
 		return;
 	}
 
-	const progressPercent = (audio.currentTime / audio.duration) * 100;
-	progressBar.value = String(progressPercent);
-}
+	// Convert seconds to mm:ss format.
+	function formatTime(totalSeconds) {
+		if (!Number.isFinite(totalSeconds)) {
+			return '0:00';
+		}
 
-// Load a new sound into the single global audio element.
-function playSelectedSound(title, src) {
-	const isSameTrack = audio.src === src;
-
-	if (!isSameTrack) {
-		audio.pause();
-		audio.src = src;
-		audio.load();
+		const minutes = Math.floor(totalSeconds / 60);
+		const seconds = Math.floor(totalSeconds % 60);
+		return `${minutes}:${String(seconds).padStart(2, '0')}`;
 	}
 
-	currentTitle = title;
-	nowPlayingText.textContent = `Now Playing: ${currentTitle}`;
-	globalPlayPauseBtn.disabled = false;
+	function updateTimeDisplay() {
+		const current = formatTime(audio.currentTime);
+		const duration = formatTime(audio.duration);
+		timeDisplay.textContent = `${current} / ${duration}`;
+	}
 
-	audio
-		.play()
-		.then(() => {
-			globalPlayPauseBtn.textContent = 'Pause';
-		})
-		.catch(() => {
-			globalPlayPauseBtn.textContent = 'Play';
-		});
-}
-
-soundButtons.forEach((button) => {
-	button.addEventListener('click', () => {
-		const title = button.dataset.title;
-		const src = button.dataset.src;
-
-		if (!title || !src) {
+	function updateProgressBar() {
+		if (!audio.duration) {
+			progressBar.value = '0';
 			return;
 		}
 
-		playSelectedSound(title, src);
+		const progressPercent = (audio.currentTime / audio.duration) * 100;
+		progressBar.value = String(progressPercent);
+	}
+
+	// Load one selected sound into the single global audio element.
+	function playSelectedSound(title, src) {
+		const absoluteSrc = new URL(src, window.location.href).href;
+		const isSameTrack = audio.src === absoluteSrc;
+
+		if (!isSameTrack) {
+			audio.pause();
+			audio.src = src;
+			audio.load();
+		}
+
+		nowPlayingText.textContent = `Now Playing: ${title}`;
+		globalPlayPauseBtn.disabled = false;
+
+		audio
+			.play()
+			.then(() => {
+				globalPlayPauseBtn.textContent = 'Pause';
+			})
+			.catch(() => {
+				globalPlayPauseBtn.textContent = 'Play';
+			});
+	}
+
+	soundButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const title = button.dataset.title;
+			const src = button.dataset.src;
+
+			if (!title || !src) {
+				return;
+			}
+
+			playSelectedSound(title, src);
+		});
 	});
-});
 
-// Global play/pause button controls the currently loaded sound.
-globalPlayPauseBtn.addEventListener('click', () => {
-	if (!audio.src) {
-		return;
-	}
+	globalPlayPauseBtn.addEventListener('click', () => {
+		if (!audio.src) {
+			return;
+		}
 
-	if (audio.paused) {
-		audio.play();
-	} else {
-		audio.pause();
-	}
-});
+		if (audio.paused) {
+			audio.play();
+		} else {
+			audio.pause();
+		}
+	});
 
-// Update button text based on playback state.
-audio.addEventListener('play', () => {
-	globalPlayPauseBtn.textContent = 'Pause';
-});
+	audio.addEventListener('play', () => {
+		globalPlayPauseBtn.textContent = 'Pause';
+	});
 
-audio.addEventListener('pause', () => {
-	globalPlayPauseBtn.textContent = 'Play';
-});
+	audio.addEventListener('pause', () => {
+		globalPlayPauseBtn.textContent = 'Play';
+	});
 
-// Keep the progress bar and time display synced in real time.
-audio.addEventListener('timeupdate', () => {
-	updateProgressBar();
-	updateTimeDisplay();
-});
+	// Keep progress and time synced while audio is playing.
+	audio.addEventListener('timeupdate', () => {
+		updateProgressBar();
+		updateTimeDisplay();
+	});
 
-audio.addEventListener('loadedmetadata', () => {
-	updateTimeDisplay();
-	updateProgressBar();
-});
+	audio.addEventListener('loadedmetadata', () => {
+		updateTimeDisplay();
+		updateProgressBar();
+	});
 
-audio.addEventListener('ended', () => {
-	globalPlayPauseBtn.textContent = 'Play';
-});
+	audio.addEventListener('ended', () => {
+		globalPlayPauseBtn.textContent = 'Play';
+	});
 
-// Let users drag the progress bar to seek through the sound.
-progressBar.addEventListener('input', () => {
-	if (!audio.duration) {
-		return;
-	}
+	// Seek when the user drags the progress bar.
+	progressBar.addEventListener('input', () => {
+		if (!audio.duration) {
+			return;
+		}
 
-	const newTime = (Number(progressBar.value) / 100) * audio.duration;
-	audio.currentTime = newTime;
-});
+		const newTime = (Number(progressBar.value) / 100) * audio.duration;
+		audio.currentTime = newTime;
+	});
 
-// Volume slider controls the same global audio element.
-volumeControl.addEventListener('input', () => {
+	volumeControl.addEventListener('input', () => {
+		audio.volume = Number(volumeControl.value);
+	});
+
 	audio.volume = Number(volumeControl.value);
-});
-
-// Set default volume and initial time text.
-audio.volume = Number(volumeControl.value);
-updateTimeDisplay();
+	updateTimeDisplay();
+})();
