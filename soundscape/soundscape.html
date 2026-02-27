@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soundscape - Brainbreak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Find Your Soundscape</h1>
+      <p>
+        Pick a mood and play calming background sounds to help you relax,
+        concentrate, or recharge your energy.
+      </p>
+    </section>
+
+    <section class="mood-selector" aria-label="Mood selector">
+      <button class="mood-card" data-target="relax-section" type="button">
+        <h2>Relax Mood</h2>
+        <p>Soft sounds to help your mind slow down and feel peaceful.</p>
+      </button>
+
+      <button class="mood-card" data-target="focus-section" type="button">
+        <h2>Focus Mood</h2>
+        <p>Steady sounds that support concentration during work or study.</p>
+      </button>
+
+      <button class="mood-card" data-target="boost-section" type="button">
+        <h2>Boost Mood</h2>
+        <p>Uplifting sounds that add motivation and positive energy.</p>
+      </button>
+    </section>
+
+    <section id="relax-section" class="sound-section" aria-labelledby="relax-heading">
+      <h2 id="relax-heading">Relax</h2>
+      <p>Gentle ambient sounds for rest and stress relief.</p>
+
+      <div class="sound-grid">
+        <article class="sound-card">
+          <h3>Ocean Waves</h3>
+          <p>Slow wave rhythm for deep breathing and calm.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Ocean Waves"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+
+        <article class="sound-card">
+          <h3>Rain Window</h3>
+          <p>Soft rain drops to create a quiet relaxing mood.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Rain Window"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+
+        <article class="sound-card">
+          <h3>Night Breeze</h3>
+          <p>Light airy sound for winding down in the evening.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Night Breeze"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section id="focus-section" class="sound-section" aria-labelledby="focus-heading">
+      <h2 id="focus-heading">Focus</h2>
+      <p>Balanced background sounds to stay on task.</p>
+
+      <div class="sound-grid">
+        <article class="sound-card">
+          <h3>Coffee Shop</h3>
+          <p>Light room ambience that keeps you mentally engaged.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Coffee Shop"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+
+        <article class="sound-card">
+          <h3>Library Air</h3>
+          <p>Quiet steady texture for reading and homework.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Library Air"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+
+        <article class="sound-card">
+          <h3>Flow Pulse</h3>
+          <p>Gentle repeating pattern to support deep work.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Flow Pulse"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section id="boost-section" class="sound-section" aria-labelledby="boost-heading">
+      <h2 id="boost-heading">Boost</h2>
+      <p>Positive and lively sounds to lift your mood.</p>
+
+      <div class="sound-grid">
+        <article class="sound-card">
+          <h3>Morning Start</h3>
+          <p>Fresh energy sound to begin your day with confidence.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Morning Start"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+
+        <article class="sound-card">
+          <h3>Bright Steps</h3>
+          <p>Upbeat rhythm for motivation during short breaks.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Bright Steps"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+
+        <article class="sound-card">
+          <h3>Victory Lift</h3>
+          <p>A quick confidence boost before your next task.</p>
+          <button
+            class="play-sound-btn"
+            data-title="Victory Lift"
+            data-src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3"
+            type="button"
+          >
+            Play
+          </button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <section class="global-player" aria-label="Global audio player">
+    <h2 id="now-playing">Now Playing: Nothing selected</h2>
+
+    <div class="player-controls">
+      <button id="global-play-pause" type="button" disabled>Play</button>
+      <input id="progress-bar" type="range" min="0" max="100" value="0" step="0.1" aria-label="Audio progress">
+      <p id="time-display">0:00 / 0:00</p>
+      <label for="volume-control">Volume</label>
+      <input id="volume-control" type="range" min="0" max="1" value="1" step="0.01">
+    </div>
+
+    <audio id="global-audio"></audio>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
