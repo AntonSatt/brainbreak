@@ -49,24 +49,6 @@ npm run build
 NODE_ENV=production node serve.js
 ```
 
-### Nginx reverse proxy
-
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:3002;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
 Use a process manager like `pm2` to keep the server running:
 
 ```bash
