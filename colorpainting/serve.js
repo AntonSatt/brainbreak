@@ -6,12 +6,14 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3002;
+const isProd = process.env.NODE_ENV === 'production';
+const projectRoot = path.join(__dirname, '..');
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
-// ---- API route (same as server/index.js) ----
+// ---- API route ----
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
 app.post('/api/generate', async (req, res) => {
@@ -102,13 +104,46 @@ The output should be:
 });
 
 // ---- Static files ----
-// Serve the entire project root (homepage, soundscape, colorpainting/dist)
-const projectRoot = path.join(__dirname, '..');
-app.use(express.static(projectRoot));
 
-// Fallback: serve colorpainting's built index for SPA routes
-app.use('/colorpainting/dist', express.static(path.join(__dirname, 'dist')));
+if (isProd) {
+  // Production: serve built React app at /colorpainting/
+  app.use('/colorpainting', express.static(path.join(__dirname, 'dist')));
 
-app.listen(PORT, () => {
-  console.log(`Mindspace running on http://localhost:${PORT}`);
-});
+  // Serve project root (homepage, soundscape, shared assets)
+  app.use(express.static(projectRoot));
+
+  // SPA fallback for colorpainting routes (Express 5 syntax)
+  app.get('/colorpainting/{*path}', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+
+  app.listen(PORT, () => {
+    console.log(`[production] Mindspace running on http://localhost:${PORT}`);
+  });
+} else {
+  // Dev: use Vite middleware for HMR
+  const { createServer: createViteServer } = await import('vite');
+
+  const vite = await createViteServer({
+    server: { middlewareMode: true },
+    appType: 'spa',
+    base: '/colorpainting/',
+  });
+
+  // Vite handles all /colorpainting/ requests (HMR, assets, index.html)
+  app.use('/colorpainting', vite.middlewares);
+
+  // Serve project root (homepage, soundscape, shared assets)
+  app.use(express.static(projectRoot));
+
+  // Fallback: redirect bare /colorpainting to /colorpainting/
+  app.get('/colorpainting', (req, res) => {
+    res.redirect('/colorpainting/');
+  });
+
+  app.listen(PORT, () => {
+    console.log(`[dev] Mindspace running on http://localhost:${PORT}`);
+    console.log(`  Homepage:      http://localhost:${PORT}/`);
+    console.log(`  ColorPainting: http://localhost:${PORT}/colorpainting/`);
+  });
+}

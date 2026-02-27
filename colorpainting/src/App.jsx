@@ -107,7 +107,7 @@ function App() {
       {/* ===== HEADER / NAV ===== */}
       <header className="site-header" ref={headerRef}>
         <div className="header-inner">
-          <a href="../../index.html" className="logo" aria-label="Mental Health – Home">
+          <a href="/index.html" className="logo" aria-label="Mental Health – Home">
             <svg className="logo-icon" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M16 2C10 8 2 16 2 24c0 6 4 12 14 14C26 36 30 30 30 24 30 16 22 8 16 2Z" fill="#6B8F71"/>
               <path d="M16 38V14" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/>
@@ -128,7 +128,7 @@ function App() {
 
           <nav className={`main-nav ${navOpen ? 'open' : ''}`} aria-label="Main navigation">
             <ul>
-              <li><a href="../../index.html" className="nav-link">Home</a></li>
+              <li><a href="/index.html" className="nav-link">Home</a></li>
               <li><button className="nav-link active" onClick={() => { scrollToApp(); setNavOpen(false); }}>ColorPainting</button></li>
             </ul>
           </nav>
