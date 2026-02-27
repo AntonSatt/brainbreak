@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Team cards — scoped to contact area */
+    .team-wrapper{margin-top:28px}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px}
+    .team-card{background:rgba(255,255,255,0.7);border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(18,24,20,0.06);text-align:center;backdrop-filter:blur(6px);border:1px solid rgba(111,128,114,0.08)}
+    .team-avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;border:4px solid rgba(191,201,186,0.8)}
+    .team-name{font-size:18px;color:#234033;margin:6px 0 4px;font-weight:600}
+    .team-role{font-size:14px;color:#6b736e;margin:0 0 10px}
+    .team-link{color:#2f503f;text-decoration:none;font-weight:600}
+    @media (max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.team-grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 
@@ -153,6 +165,32 @@
         Contact us — we’ll reply as soon as we can.
       </p>
       <a href="cat-surprise.html" class="contact-btn">Send email</a>
+      
+      <div class="team-wrapper" aria-label="Meet the team">
+        <h3 class="section-subtitle" style="margin-top:22px;color:#334937">Meet the team</h3>
+        <div class="team-grid">
+          <div class="team-card">
+            <img src="linkedinBilder/Anton.jpeg" alt="Anton Sätterkvist" class="team-avatar"/>
+            <div class="team-name">Anton Sätterkvist</div>
+            <div class="team-role">DevOps</div>
+            <a class="team-link" href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+          </div>
+
+          <div class="team-card">
+            <img src="linkedinBilder/Katarina.jpeg" alt="Katarina Holm" class="team-avatar"/>
+            <div class="team-name">Katarina Holm</div>
+            <div class="team-role">Fullstack .NET</div>
+            <a class="team-link" href="https://www.linkedin.com/in/katarina-holm-14aa4a325/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+          </div>
+
+          <div class="team-card">
+            <img src="linkedinBilder/Fausto.jpeg" alt="Fausto Spalvieri" class="team-avatar"/>
+            <div class="team-name">Fausto Spalvieri</div>
+            <div class="team-role">Fullstack JS</div>
+            <a class="team-link" href="https://www.linkedin.com/in/fausto-spalvieri/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
