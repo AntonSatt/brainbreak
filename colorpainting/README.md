@@ -1,16 +1,49 @@
-# React + Vite
+# Coloring Book Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Draw a rough sketch and this app will turn it into a beautiful, detailed coloring book page that you can fill in with colors right in the browser.
 
-Currently, two official plugins are available:
+Powered by Google Gemini via [OpenRouter](https://openrouter.ai/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
 
-## React Compiler
+- [Node.js](https://nodejs.org/) (v18 or later)
+- An [OpenRouter](https://openrouter.ai/) API key
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation
 
-## Expanding the ESLint configuration
+```bash
+git clone <repo-url>
+cd idea_1
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Configuration
+
+Copy the example env file and add your OpenRouter API key:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and replace the placeholder with your actual key:
+
+```
+OPENROUTER_API_KEY=sk-or-v1-your-key-here
+```
+
+## Running
+
+```bash
+npm run dev
+```
+
+This starts both the Express backend (port 3001) and the Vite dev server (port 5173).
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## How to use
+
+1. Draw something on the canvas (a person, animal, house, anything!)
+2. Optionally add a text hint to help describe your drawing
+3. Click **Generate Coloring Page**
+4. Once the coloring book page appears, pick a color and click on any white area to fill it in
