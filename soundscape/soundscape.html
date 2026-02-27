@@ -1,172 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soundscape - Brainbreak</title>
+  <title>Soundscape – Mental Hälsa</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo" aria-label="Mental Hälsa – Hem">
+        <svg class="logo-icon" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 2C10 8 2 16 2 24c0 6 4 12 14 14C26 36 30 30 30 24 30 16 22 8 16 2Z" fill="#6B8F71"/>
+          <path d="M16 38V14" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M16 22c-4-3-8-2-10 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M16 18c3-3 7-2 9 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Mental Hälsa</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="../index.html" class="nav-link">Hem</a></li>
+          <li><a href="../index.html#om-oss" class="nav-link">Om oss</a></li>
+          <li><a href="../index.html#kontakt" class="nav-link">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <main>
     <section class="hero" aria-labelledby="hero-heading">
-      <h1 id="hero-heading">Find Your Soundscape</h1>
-      <p>
-        Pick a mood and play calming background sounds to help you relax,
-        concentrate, or recharge your energy.
-      </p>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="shape shape--top-right"></div>
+        <div class="shape shape--left"></div>
+        <div class="shape shape--bottom-left"></div>
+        <div class="shape shape--circle"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 id="hero-heading" class="hero-title">Find Your Soundscape</h1>
+        <p class="hero-subtitle">
+          Pick a mood and play calming background sounds to help you relax,
+          concentrate, or recharge your energy.
+        </p>
+      </div>
     </section>
 
     <section class="mood-selector" aria-label="Mood selector">
       <button class="mood-card" data-target="relax-section" type="button">
+        <span class="mood-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 13c2.5-3 5-3 7.5 0s5 3 7.5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M4 17c2.5-3 5-3 7.5 0s5 3 7.5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+            <circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.6"/>
+          </svg>
+        </span>
         <h2>Relax Mood</h2>
         <p>Soft sounds to help your mind slow down and feel peaceful.</p>
       </button>
 
       <button class="mood-card" data-target="focus-section" type="button">
+        <span class="mood-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.65"/>
+            <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
         <h2>Focus Mood</h2>
         <p>Steady sounds that support concentration during work or study.</p>
       </button>
 
       <button class="mood-card" data-target="boost-section" type="button">
+        <span class="mood-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.3L7.5 17l.9-5L4.8 8.2l5-.7L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+        </span>
         <h2>Boost Mood</h2>
         <p>Uplifting sounds that add motivation and positive energy.</p>
       </button>
     </section>
 
     <section id="relax-section" class="sound-section" aria-labelledby="relax-heading">
-      <h2 id="relax-heading">Relax</h2>
-      <p>Gentle ambient sounds for rest and stress relief.</p>
+      <h2 id="relax-heading" class="section-title">Relax</h2>
+      <p class="section-text">Gentle ambient sounds for rest and stress relief.</p>
 
       <div class="sound-grid">
         <article class="sound-card">
           <h3>Ocean Waves</h3>
           <p>Slow wave rhythm for deep breathing and calm.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Ocean Waves"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Ocean Waves" data-src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3" type="button">Play</button>
         </article>
 
         <article class="sound-card">
           <h3>Rain Window</h3>
           <p>Soft rain drops to create a quiet relaxing mood.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Rain Window"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Rain Window" data-src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3" type="button">Play</button>
         </article>
 
         <article class="sound-card">
           <h3>Night Breeze</h3>
           <p>Light airy sound for winding down in the evening.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Night Breeze"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Night Breeze" data-src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3" type="button">Play</button>
         </article>
       </div>
     </section>
 
     <section id="focus-section" class="sound-section" aria-labelledby="focus-heading">
-      <h2 id="focus-heading">Focus</h2>
-      <p>Balanced background sounds to stay on task.</p>
+      <h2 id="focus-heading" class="section-title">Focus</h2>
+      <p class="section-text">Balanced background sounds to stay on task.</p>
 
       <div class="sound-grid">
         <article class="sound-card">
           <h3>Coffee Shop</h3>
           <p>Light room ambience that keeps you mentally engaged.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Coffee Shop"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Coffee Shop" data-src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3" type="button">Play</button>
         </article>
 
         <article class="sound-card">
           <h3>Library Air</h3>
           <p>Quiet steady texture for reading and homework.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Library Air"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Library Air" data-src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="button">Play</button>
         </article>
 
         <article class="sound-card">
           <h3>Flow Pulse</h3>
           <p>Gentle repeating pattern to support deep work.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Flow Pulse"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Flow Pulse" data-src="https://samplelib.com/lib/preview/mp3/sample-3s.mp3" type="button">Play</button>
         </article>
       </div>
     </section>
 
     <section id="boost-section" class="sound-section" aria-labelledby="boost-heading">
-      <h2 id="boost-heading">Boost</h2>
-      <p>Positive and lively sounds to lift your mood.</p>
+      <h2 id="boost-heading" class="section-title">Boost</h2>
+      <p class="section-text">Positive and lively sounds to lift your mood.</p>
 
       <div class="sound-grid">
         <article class="sound-card">
           <h3>Morning Start</h3>
           <p>Fresh energy sound to begin your day with confidence.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Morning Start"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Morning Start" data-src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3" type="button">Play</button>
         </article>
 
         <article class="sound-card">
           <h3>Bright Steps</h3>
           <p>Upbeat rhythm for motivation during short breaks.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Bright Steps"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Bright Steps" data-src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3" type="button">Play</button>
         </article>
 
         <article class="sound-card">
           <h3>Victory Lift</h3>
           <p>A quick confidence boost before your next task.</p>
-          <button
-            class="play-sound-btn"
-            data-title="Victory Lift"
-            data-src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3"
-            type="button"
-          >
-            Play
-          </button>
+          <button class="play-sound-btn" data-title="Victory Lift" data-src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3" type="button">Play</button>
         </article>
       </div>
     </section>
@@ -174,7 +168,6 @@
 
   <section class="global-player" aria-label="Global audio player">
     <h2 id="now-playing">Now Playing: Nothing selected</h2>
-
     <div class="player-controls">
       <button id="global-play-pause" type="button" disabled>Play</button>
       <input id="progress-bar" type="range" min="0" max="100" value="0" step="0.1" aria-label="Audio progress">
@@ -182,9 +175,12 @@
       <label for="volume-control">Volume</label>
       <input id="volume-control" type="range" min="0" max="1" value="1" step="0.01">
     </div>
-
     <audio id="global-audio"></audio>
   </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Mental Hälsa. Alla rättigheter förbehållna.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
